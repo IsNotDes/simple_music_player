@@ -1,6 +1,5 @@
 // app.txt
 use crossterm::event::{self, Event, KeyCode};
-
 use ratatui::prelude::*;
 use rodio::{Decoder, OutputStream, Sink};
 use std::{
@@ -242,24 +241,17 @@ impl App {
         self.selected_song_index = Some(i);
     }
 
-    pub fn tick(&mut self) {
-        if self.is_playing && self.sink.empty() {
-            let _ = self.next_song();
-        }
-        self.update_waveform();
-    }
-
-    fn update_waveform(&mut self) {
-        let mut rng = rand::thread_rng();
-        let new_waveform: Vec<u64> = (0..100).map(|_| rng.gen_range(0..100)).collect();
-        self.waveform = new_waveform;
-    }
+    //pub fn tick(&mut self) {
+    //    if self.is_playing && self.sink.empty() {
+    //        let _ = self.next_song();
+    //    }
+    //}
 }
 
 pub fn run_app<B: Backend>(terminal: &mut Terminal<B>, mut app: App) -> io::Result<()> {
     loop {
         terminal.draw(|f| ui(f, &mut app))?;
-        app.tick();
+        //app.tick();
 
         if event::poll(Duration::from_millis(100))? {
             if let Event::Key(key) = event::read()? {
