@@ -1,12 +1,8 @@
-// src/ui.rs
 use crate::app::{App, InputMode};
-// --- MODIFIED IMPORT ---
-// Add Bar and BarGroup to the imports
 use ratatui::{
     prelude::*,
     widgets::{Bar, BarChart, BarGroup, Block, Borders, List, ListItem, ListState, Paragraph},
 };
-// --- END MODIFIED IMPORT ---
 
 pub fn ui(f: &mut Frame, app: &mut App) {
     let main_chunks = Layout::default()
@@ -52,8 +48,6 @@ pub fn ui(f: &mut Frame, app: &mut App) {
     let min_db = -100.0; // Minimum decibel value to display
     let max_db = 100.0;   // Maximum decibel value to display
 
-    // --- MODIFIED PART ---
-    // Create Bars without explicitly setting labels or value styles
     let bars: Vec<Bar> = spectrogram_data
         .iter()
         .map(|&v| {
@@ -69,16 +63,13 @@ pub fn ui(f: &mut Frame, app: &mut App) {
         })
         .collect();
 
-    // Create a single BarGroup containing all the bars, without a group label
     let bargroup = BarGroup::default().bars(&bars);
 
-    // Create the BarChart using the BarGroup
     let barchart = BarChart::default()
         .block(Block::default().title("Visualizer").borders(Borders::ALL))
-        .data(bargroup) // Pass the BarGroup
+        .data(bargroup)
         .bar_width(1)
         .bar_gap(0);
-    // --- END MODIFIED PART ---
 
     f.render_widget(barchart, top_chunks[1]);
 
