@@ -1,4 +1,3 @@
-// app.txt
 use crossterm::event::{self, Event, KeyCode};
 use ratatui::prelude::*;
 use ringbuf::Consumer;
@@ -257,7 +256,6 @@ impl App {
                             .collect();
                     }
                     
-                    // Consistent update rate - 30 FPS for smooth visualization
                     thread::sleep(Duration::from_millis(16));
                 }
             });
@@ -370,7 +368,7 @@ impl App {
 }
 
 pub fn run_app<B: Backend>(terminal: &mut Terminal<B>, mut app: App) -> io::Result<()> {
-    let tick_rate = Duration::from_millis(16); // ~60 FPS for smooth UI
+    let tick_rate = Duration::from_millis(16);
     
     loop {
         // Non-blocking event poll with short timeout
