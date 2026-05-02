@@ -21,7 +21,7 @@ L'architecture repose sur plusieurs threads séparés : un thread dédié au dé
 
 ```
 ┌─────────────────────────────────────┐
-│           Thread principal (UI)      │
+│           Thread principal (UI)     │
 │   ratatui + crossterm @ 60 fps      │
 └────────────────┬────────────────────┘
                  │ Arc>>
@@ -56,30 +56,30 @@ cargo run --release
 
 ## Contrôles
 
-| Touche       | Action                          |
-|-------------|----------------------------------|
-| `Espace`    | Lancer la piste sélectionnée    |
-| `p`         | Lecture / Pause                  |
-| `n`         | Piste suivante                   |
-| `b`         | Piste précédente                 |
-| `←` / `→`  | Reculer / Avancer de 5 secondes  |
-| `↑` / `↓`  | Naviguer dans la playlist        |
-| `e`         | Mode saisie (recherche)          |
-| `Entrée`    | Valider la recherche             |
-| `Échap`     | Quitter le mode saisie           |
-| `c`         | Effacer la recherche             |
-| `q`         | Quitter                          |
+| Touche       | Action                           |
+|--------------|----------------------------------|
+| `Espace`     | Lancer la piste sélectionnée     |
+| `p`          | Lecture / Pause                  |
+| `n`          | Piste suivante                   |
+| `b`          | Piste précédente                 |
+| `←` / `→`    | Reculer / Avancer de 5 secondes  |
+| `↑` / `↓`    | Naviguer dans la playlist        |
+| `e`          | Mode saisie (recherche)          |
+| `Entrée`     | Valider la recherche             |
+| `Échap`      | Quitter le mode saisie           |
+| `c`          | Effacer la recherche             |
+| `q`          | Quitter                          |
 
 ---
 
 ## Stack technique
 
-| Crate       | Rôle                                  |
-|------------|----------------------------------------|
-| `ratatui`  | Interface TUI (widgets, layout)        |
-| `rodio`    | Moteur de lecture audio                |
+| Crate      | Rôle                                  |
+|------------|---------------------------------------|
+| `ratatui`  | Interface TUI (widgets, layout)       |
+| `rodio`    | Moteur de lecture audio               |
 | `ringbuf`  | Ring buffers lock-free pour l'audio   |
-| `rustfft`  | Transformée de Fourier (FFT)           |
+| `rustfft`  | Transformée de Fourier (FFT)          |
 | `apodize`  | Fenêtrage de Hanning pour la FFT      |
 | `crossterm`| Gestion du terminal cross-platform    |
 
